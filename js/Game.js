@@ -2,15 +2,17 @@
  * Project 4 - OOP Game App
  * Game.js */
 class Game {
-    constructor() {
-        missed: 0;
-        phrases: [] ; //an [] array of 5 phrase objects to use with game 
-        activePharase: activePharase; //prase object currently in play initial value null
+    constructor(missed, phrase, activePharase) {
+        this.missed = 0;
+        this.phrase = [
+           new Phrase('Superior'),
+            new Phrase(  "Monumental"),
+            new Phrase(  "Excellent"),
+            new Phrase(  "Flawless")
+         ] ;                        //an [] array of 5 phrase objects to use with game 
+        this.activePharase = null; //prase object currently in play initial value null
     }
-    /*"Superior",
-            "Monumental",
-            "Excellent",
-            "Flawless"*/
+  
     
     startGame() { }// hide start screen overlay, calls get random phrase() and sets active phrase property
 
