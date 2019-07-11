@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Game.js */
 class Game {
-    constructor(missed, phrases, activePharase = null) {
+    constructor(missed, phrases, activePhrase = null) {
         this.missed = 0;
         this.phrases = [
             new Phrase("Seek light"),
@@ -10,7 +10,7 @@ class Game {
             new Phrase("Honor thy Father"),
             new Phrase("Flawless"), //these work but i dont feel are the code i want to use
             new Phrase("Pimpin aint Easy")];  //an [] array of 5 phrase objects to use with game 
-        this.activePharase = activePharase; //prase object currently in play initial value null
+        this.activePhrase = activePhrase; //prase object currently in play initial value null
         
     }
 

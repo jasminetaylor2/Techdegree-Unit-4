@@ -2,20 +2,26 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 class Phrase {
-    constructor(phrase) { 
-        this.phrase =  phrase.toLowerCase();
+    constructor(phrase) {
+        this.phrase = phrase.toLowerCase();
     }
    
-    addPhraseToDisplay() {/* add letter placeholders to the display when
-                        the game starts. Each letter represented by empty box. 1<li> for each letter
-    use id or class attr. needed use css (.letters)class for letter and (.space)class for spaces */ }
-    //$('li').createElement
-    checkLetter() { } //check to see if letter selected by player matched letter in phrase
+    addPhraseToDisplay() {
+        for (let i = 0; i < this.phrase.length; i += 1) {
+            if (this.phrase[i] !== ' ') {
+                $('div#phrase.section').append(`<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`);
+            } else {
+                $('div#phrase.section').append(`<li class="hide space">&nbsp;</li>`);
+            }
+        
+        }
+      
+        checkLetter()  } //check to see if letter selected by player matched letter in phrase
 
-    showMatchedLetter() {
+        showMatchedLetter() {
        
-     } // reveals letters on the board that matc palyer selection. 
-                            // select DOM elements with class name that match selected letter and replace with hide css with show
+        } // reveals letters on the board that matc palyer selection. 
+        // select DOM elements with class name that match selected letter and replace with hide css with show
 
-}
-  
+    }
+
