@@ -2,7 +2,7 @@
  * Project 4 - OOP Game App
  * Game.js */
 class Game {
-    constructor(missed, phrases, activePhrase = null) {
+    constructor(activePhrase = null) {
         this.missed = 0;
         this.phrases = [
             new Phrase("Seek light"),
@@ -46,19 +46,27 @@ class Game {
         $('#overlay').hide();               // hide start screen overlay, calls get random phrase() and sets active phrase property
         this.phrase = this.getRandomPhrase();
         this.phrase.addPhraseToDisplay();
+        //this.ready = true;
 
     }
 
 
 
-    handleInteraction() { /* chekcs to see if the button clicked by player matches letter in phrase
+    handleInteraction() {
+        const phraseKey = this.phrases.filter(letter => letter  )
+                if (this.class === "key") {
+                    //this.phrase.addPhraseToDisplay.chosen;
+                } 
+            
+        }
+        /* chekcs to see if the button clicked by player matches letter in phrase
                             disable the selected letter on screen keyboard
                             if (phrase does not include guessed letter) {add .wrong class the selected letters keyboard button and call removeLife()} 
                             if ( phrase includes guess letter) {add .chosen class to selectted letters keyboard button  
                                 and call showMatchedLetter() on phrase , and then call checkForWin()}
                             if (player wins game) {call gameOver()}*/
 
-    }
+  
 
     removeLife() { /* removes life from scoreboard by replacing liveHeart.png with lostHeart.png
                     incriments missed property. 
