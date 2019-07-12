@@ -11,7 +11,7 @@ class Game {
             new Phrase("Flawless"), //these work but i dont feel are the code i want to use
             new Phrase("Pimpin aint Easy")];  //an [] array of 5 phrase objects to use with game 
         this.activePhrase = activePhrase; //prase object currently in play initial value null
-        
+
     }
 
     getRandomPhrase() {
@@ -41,15 +41,15 @@ class Game {
 
     }
 
-    
+
     startGame() {
         $('#overlay').hide();               // hide start screen overlay, calls get random phrase() and sets active phrase property
         this.phrase = this.getRandomPhrase();
         this.phrase.addPhraseToDisplay();
-   
-     }
-     
-  
+
+    }
+
+
 
     handleInteraction() { /* chekcs to see if the button clicked by player matches letter in phrase
                             disable the selected letter on screen keyboard
@@ -66,7 +66,7 @@ class Game {
     }
 
     checkForWin() { } // check to see if player revealed all letter in active phrase
-    
+
     gameOver() { /* displays original start screen overlay
                     depending on outcome of game updates <h1> with win or loss messaage
     replace overlays css .start class with either .win or .lose class */ }

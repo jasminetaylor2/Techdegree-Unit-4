@@ -1,12 +1,11 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-const newGame = new Game();
-//const gameButton = document.getElementById('btn__reset');        //add 'click' ebent listener to "startGame" button{ which creates ner Game object and starts by callin startGame() }
-//const onscreenKeys = document.querySelectorAll('.key');         //add eventlisteneers for the start button and onscreen keyboard buttons
+const NewGame = new Game(); //creates new instance of Game class
+//?help when i call this variable game the addphrase to disp;ay function does not work
+   
+const onscreenKeys = document.querySelectorAll('.key');         //add eventlisteneers for the start button and onscreen keyboard buttons
 
-//onscreenKeys.addEventListner('click', 'keypress', handleInteraction); //'click' event lsiteners to onscreen keyboard butons{ calls handleInteraction() use event delegation}
-//gameButton.addEventListener('click', startGame);
 
 // const game = new Game();
 // game.phrases.forEach((phrase, index) => {
@@ -17,6 +16,8 @@ const newGame = new Game();
 // const logPhrase = (phrase) => {
 //     console.log(`Phrase - phrase: `, phrase.phrase);
 // };
+    //text code for phrases property inGameclass
+
 // const game = new Game();
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
@@ -24,6 +25,7 @@ const newGame = new Game();
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
     //test if getrandonPhrase method works!
+
 // gameButton.on('click', startGame)(() => {
 //     game = new Game();
 //     game.resetGameBoard();
@@ -32,10 +34,10 @@ const newGame = new Game();
 //     //updateScreen();
 // });
     //rough plan
-$('#btn__reset').click(function () {
+$('#btn__reset').click(function () { //add 'click' event listener to "startGame" button{ which }
     resetDisplay(event.target);
-    game = new Game();
-    game.startGame();
+    game = new Game();              // creates new Game object and starts by callin startGame()
+    game.startGame();              //calls startGame()method on object
 });
 
 function resetDisplay() {
@@ -46,15 +48,20 @@ function resetDisplay() {
             game.active = true;
         });
 }
-//keyboard event listener
+//on screen keyboard event listener
 // onscreenKeys.addEventListener('click', (e) => {
 
 //     if (e.target.className === 'key') {
 //         markButton(e.target.textContent);
 //     }
-
 // });
-// });
+//roughplan
+$('button.key').click(function (event) {   //click event listener for each onscrren keyboard button
+    game.handleInteraction(event);      //calls handleInteraction method when letter clicked
+});
 
-   
+//keyboard press event listener
+document.addEventListener('keydown', function (event) {
+    game.handleInteraction(event);      //calls handleInteraction method
+});
     ////clicking blank space btw should not result in handleInteraction()
