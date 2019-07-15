@@ -2,20 +2,27 @@
  * Project 4 - OOP Game App
  * Game.js */
 class Game {
-    constructor(activePhrase = null) {
+    constructor() {
         this.missed = 0;
-        this.phrases = [
-            new Phrase("Seek light"),
-            new Phrase("Speak truth"),
-            new Phrase("Honor thy Father"),
-            new Phrase("Flawless"), //these work but i dont feel are the code i want to use
-            new Phrase("Pimpin aint Easy")];  //an [] array of 5 phrase objects to use with game 
-        this.activePhrase = activePhrase; //prase object currently in play initial value null
+        this.phrases = this.createPhrase();  //an [] array of 5 phrase objects to use with game 
+        this.activePhrase = null; //prase object currently in play initial value null
 
     }
 
+    createPhrase() {
+        let phrases = [
+            new Phrase("Seek light"),
+            new Phrase("Speak truth"),
+            new Phrase("Honor thy Father"),
+            new Phrase("Flawless"),
+            new Phrase("Pimpin aint Easy")];
+
+        return phrases;
+    }
+
     getRandomPhrase() {
-        const randPhrase = Math.floor(Math.random() * this.phrases.length);
+        // phraseArray = this.phrases.length();
+        let randPhrase = Math.floor(Math.random() * this.phrases.length); // randomly retrieves phrase story in phrases array and return it
         return this.phrases[randPhrase];
 
         // phrases.forEach(phrase => {
@@ -24,56 +31,99 @@ class Game {
         //     return _phraseRandom;
         // });
 
-
-        // $.each(phrases, function (index, value) { 
-        //     console.log(value);
-        //     //return phrases.val();
-
-        // });
-        // const gamePhrases = phrases.length;   
-
-        //for (let i= 0; i < phrases.length; i += 1) {
-        // console.log(phrases[i]);
-
-
-        //     // randomly retrieves phrase story in phrases array and return it
-        // }
-
     }
 
 
     startGame() {
         $('#overlay').hide();               // hide start screen overlay, calls get random phrase() and sets active phrase property
         this.phrase = this.getRandomPhrase();
-        this.phrase.addPhraseToDisplay();
-        //this.ready = true;
+        //this.phrase = this.addPhraseToDisplay();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
 
+    }
+    resetGameboard() {
+        // $('#phrase ul').empty(); // removes all child nodes of Ul ==li emlements
+        $('#phrase ul').innerHtml = " ";
+
+        $('#overlay').removeClass('win', 'lose');
+        $('#overlay').addClass('start');
+        // for (let i = 0; i < $('button.key').length; i += 1)
+
+        $("button.key").removeClass('chosen', 'wrong');
+        $("buton.key").prop("disabled", false);
+        //for (let i = 0; i < $('#scoreboard li img').length; i += 1) {
+            // if ($('#scoreboard li img')[i].classList('tries')) {
+                $("div#scoreboard li img").attr("src", "images/liveHeart.png").show(["Heart Icon"]);
+           // }
+            //$("div#scoreboard li img").attr("").show();
+        
     }
 
 
 
-    handleInteraction() {
-        const phraseKey = this.phrases.filter(letter => letter  )
-                if (this.class === "key") {
-                    //this.phrase.addPhraseToDisplay.chosen;
-                } 
-            
+    handleInteraction(letter, element) {
+        if (this.phrase.checkLetter(letter)) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
+            this.phrase.showMatchedLetter(letter);      // if letter matched showMatchedLetter function 
+            this.checkForWin();
+            return true;
         }
-        /* chekcs to see if the button clicked by player matches letter in phrase
-                            disable the selected letter on screen keyboard
-                            if (phrase does not include guessed letter) {add .wrong class the selected letters keyboard button and call removeLife()} 
-                            if ( phrase includes guess letter) {add .chosen class to selectted letters keyboard button  
-                                and call showMatchedLetter() on phrase , and then call checkForWin()}
-                            if (player wins game) {call gameOver()}*/
+        // } else if (this.missed >= 4) { }
+        //     this.removeLife();
+        //     this.gameOver();
+            
+        // }  // need to disable onscreen keyboard button if retun is true;
+        // else if (this.prop("disabled", true)) {
+        //     $(".key").blur();
+        //  }
+        // else if (this.missed >= 4) {
+        //     return removeLife();
+        // }
+        // else if (this.missed = 5) { return this.gameOver(); }
+            
+    }
 
-  
+
+    
+    /* chekcs to see if the button clicked by player matches letter in phrase
+                        disable the selected letter on screen keyboard
+                        if (phrase does not include guessed letter) {add .wrong class the selected letters keyboard button and call removeLife()} 
+                        if ( phrase includes guess letter) {add .chosen class to selectted letters keyboard button  
+                            and call showMatchedLetter() on phrase , and then call checkForWin()}
+                        if (player wins game) {call gameOver()}*/
+    // if (this.ready) {
+    //     if (e.type === "key") { this.activePhrase.showMatchedLetter(); }
+    // }
+
+    // const phraseKey = this.phrases.filter(letter => letter  )
+    //         if (this.class === "key") {
+    //             //this.phrase.addPhraseToDisplay.chosen;
+    //         } 
+
+
 
     removeLife() { /* removes life from scoreboard by replacing liveHeart.png with lostHeart.png
                     incriments missed property. 
     if (player has 5 missed guess) { end game by calling gameOver ()}*/
     }
 
-    checkForWin() { } // check to see if player revealed all letter in active phrase
+    checkForWin() {
+        // target.mark(token);
+
+        // if (!this.checkForWin(target)) {
+        //     console.log('no win');
+        //     this.switchPlayers();
+
+        //     if (this.activePlayer.checkTokens()) {
+        //         this.activePlayer.activeToken.drawHTMLToken();
+        //         this.ready = true;
+        //     } else {
+        //         this.gameOver('No more tokens');
+        //     }
+        // } else {
+        //     console.log('win');
+        //     this.gameOver(`${target.owner.name} wins!`)
+    }	// } // check to see if player revealed all letter in active phrase
 
     gameOver() { /* displays original start screen overlay
                     depending on outcome of game updates <h1> with win or loss messaage
