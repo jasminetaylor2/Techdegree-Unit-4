@@ -65,7 +65,7 @@ class Game {
     handleInteraction(event) {
         // const clickedKey = $(".key").click(() => { });
         $(event.target).prop("disabled", true).css({ "opacity": "0.6" });
-        if (this.phrase.checkLetter()) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
+        if (this.phrase.checkLetter() === event.target) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
             //  $("button.key").attr("disabled", true);
             this.phrase.showMatchedLetter();      // if letter matched showMatchedLetter function this.phrase.checkLetter() === ''
             this.checkForWin();

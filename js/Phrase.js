@@ -46,25 +46,28 @@ class Phrase {
     // return checkPhrase.match(letter);
 
 
-    // checkLetter(letter) {
-    //     phrases = phrases.filter(l => {
-    //         return l.phrase != letter.phrase;
-    //      })
-    // }
-
     showMatchedLetter(letter) {
-       // sletter = $(".letter").textContent; 
-        if (this.checkLetter(letter) === true) {
-            $(".letter").addClass("show", true);
-            $(".letter").removeClass("hide");
-        } else if (this.checkLetter(letter) === false) { $(".letter").addClass("hide", false); }
-       
-        
+        let $phraseL;
+        for (let index = 0; index < this.phrase.length; index++) {
+            $phraseL = $("#phrase li")[index];
+            if ($phraseL.textContent === letter) {
+                $phraseL.classList.add('show');
+                $phraseL.classList.remove('hide');
+            }
+
+
+        }
+        //if (this.checkLetter(letter) === false)
+
+
         console.log('help me obi-juan');
     }
 
-     // reveals letters on the board that matc palyer selection. 
+    // reveals letters on the board that matc palyer selection. 
     // select DOM elements with class name that match selected letter and replace with hide css with show
-    
+    // for (let index = 0; index < letter.length; index++) {
+    //     sletter[index].addClass("show");
+
+    // }
 }
 
