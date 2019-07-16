@@ -6,7 +6,7 @@ let game; //creates new instance of Game class
 
 //?help when i call this variable game the addphrase to disp;ay function does not work
 
-const onscreenKeys = $('.key');         //add eventlisteneers for the start button and onscreen keyboard buttons
+        //add eventlisteneers for the start button and onscreen keyboard buttons
 
 
 // test phrases are working 
@@ -22,9 +22,10 @@ $('#btn__reset').click(function () { //add 'click' event listener to "startGame"
 });
 
 
-$('button.key').click(function (event) {   //click event listener for each onscrren keyboard button
+$('.key').click(function () {   //click event listener for each onscrren keyboard button
     game.handleInteraction(event);      //calls handleInteraction method when letter clicked
-});
+    
+}); 
 
 //keyboard press event listener
 document.addEventListener('keydown', function (event) {

@@ -10,9 +10,9 @@ class Phrase {
 
         for (let i = 0; i < this.phrase.length; i += 1) {
             if (this.phrase[i] !== ' ') {
-                $('div#phrase.section').append(`<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`); //using template literals to append phrase to ul
+                $('#phrase ul').append(`<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`); //using template literals to append phrase to ul
             } else {
-                $('div#phrase.section').append(`<li class="hide space">  </li>`);  //use css class to program letter and space
+                $('#phrase ul ').append(`<li class="hide space">  </li>`);  //use css class to program letter and space
             }
 
         }
@@ -53,12 +53,17 @@ class Phrase {
     // }
 
     showMatchedLetter(letter) {
-        return this.phrase.includes(letter);
-      //  $('#phrase > li').addClass('show').removeClass('hide');
+       // sletter = $(".letter").textContent; 
+        if (this.checkLetter(letter) === true) {
+            $(".letter").addClass("show", true);
+            $(".letter").removeClass("hide");
+        } else if (this.checkLetter(letter) === false) { $(".letter").addClass("hide", false); }
+       
         
+        console.log('help me obi-juan');
+    }
 
-
-    } // reveals letters on the board that matc palyer selection. 
+     // reveals letters on the board that matc palyer selection. 
     // select DOM elements with class name that match selected letter and replace with hide css with show
     
 }

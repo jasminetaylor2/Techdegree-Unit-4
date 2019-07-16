@@ -62,18 +62,27 @@ class Game {
 
 
 
-    handleInteraction(letter, element) {
-        if (this.phrase.checkLetter(letter)) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
-            this.phrase.showMatchedLetter(letter);      // if letter matched showMatchedLetter function 
+    handleInteraction(event) {
+        // const clickedKey = $(".key").click(() => { });
+        $(event.target).prop("disabled", true).css({ "opacity": "0.6" });
+        if (this.phrase.checkLetter()) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
+            //  $("button.key").attr("disabled", true);
+            this.phrase.showMatchedLetter();      // if letter matched showMatchedLetter function this.phrase.checkLetter() === ''
             this.checkForWin();
+
+            // let $buttonKey = $('.key'); //gives chosen class to keyboard letter .addClass('chosen')
+            // if ($(event.target).className === "disabled") {
+            //     $(".key")  // add opacity prop to create diabled look button
+            // }
             return true;
         }
+    }
         // } else if (this.missed >= 4) { }
         //     this.removeLife();
         //     this.gameOver();
             
         // }  // need to disable onscreen keyboard button if retun is true;
-        // else if (this.prop("disabled", true)) {
+        // else if $(this).prop('disabled', true)) {
         //     $(".key").blur();
         //  }
         // else if (this.missed >= 4) {
@@ -81,7 +90,7 @@ class Game {
         // }
         // else if (this.missed = 5) { return this.gameOver(); }
             
-    }
+    
 
 
     
