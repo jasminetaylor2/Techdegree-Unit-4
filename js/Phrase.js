@@ -16,7 +16,7 @@ class Phrase {
             }
 
         }
-        // $("#phrase ul").append(addPhraseToDisplay);
+        
 
 
     }
@@ -25,49 +25,24 @@ class Phrase {
 
 
     checkLetter(letter) {
-        return this.phrase.includes(letter);
+        return this.phrase.includes(letter);   //check to see if letter selected by player matched letter in phrase
     }
-    // this.letter = function () { 
-    //     return letters.phrases
-
-    // });
-    // this.phrase.filter(l => {
-    //     return l.phrase != letter.phrase;           //check to see if letter selected by player matched letter in phrase
-    // }
-    // );
-
-
-
-    //return this.phrase.match(letter);
-    //each time cycle thru aray check if letter is equal to letter pass
-    //checkLetter(letter)
-    //const checkLetter = phrases.filter(letter => letter.val() === letter.textContent);
-    // const checkPhrase = this.phrase.toLowerCase().split();
-    // return checkPhrase.match(letter);
 
 
     showMatchedLetter(letter) {
         let $phraseL;
-        for (let index = 0; index < this.phrase.length; index++) {
-            $phraseL = $("#phrase li")[index];
-            if ($phraseL.textContent === letter) {
-                $phraseL.classList.add('show');
-                $phraseL.classList.remove('hide');
+        for (let index = 0; index < this.phrase.length; index++) {  //loop through phrases to get the index of letter selected
+            $phraseL = $("#phrase li")[index];                      // stores the index value of the phrase array
+            if ($phraseL.textContent === letter) {                  //checks the letter matches the phrase index textContent
+                $phraseL.classList.add('show');                     // add class of show to matched letter value
+                $phraseL.classList.remove('hide');                  // add class of hide to matched letter value
             }
 
 
         }
-        //if (this.checkLetter(letter) === false)
-
-
-        console.log('help me obi-juan');
+       
     }
 
-    // reveals letters on the board that matc palyer selection. 
-    // select DOM elements with class name that match selected letter and replace with hide css with show
-    // for (let index = 0; index < letter.length; index++) {
-    //     sletter[index].addClass("show");
-
-    // }
+ 
 }
 
