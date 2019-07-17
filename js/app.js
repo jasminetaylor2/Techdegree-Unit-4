@@ -28,8 +28,8 @@ $('.key').click(function () {   //click event listener for each onscrren keyboar
 }); 
 
 //keyboard press event listener
-document.addEventListener('keydown', function (event) {
-    game.handleInteraction(event);      // listens for keypresses on user keyboard
-});
+// document.addEventListener('keydown', function (event) {
+//     game.handleInteraction(event);      // listens for keypresses on user keyboard
+// });
     ////clicking blank space btw should not result in handleInteraction()
 //Resetbutton
