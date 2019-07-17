@@ -58,24 +58,43 @@ class Game {
 
 
     handleInteraction(event) {
-        $(event.target).prop("disabled", true).css({ "opacity": "0.6" });  //
-        if (event.target.className === 'letter') {
-            return this.activePhrase.showMatchedLetter;
+      let letter = $(event.target).text();
+        $(event.target).prop("disabled", true);  // disabled selected letter onscreen keyboard //.css({ "opacity": "0.6" })
+        
+        if (this.activePhrase.checkLetter(letter)) {
+            $(event.target).addClass("chosen");
+            this.activePhrase.showMatchedLetter(letter);
+            if (this.checkForWin()) {
+                this.gameOver();
+             }
+        } else {
+            $(event.target).addClass("wrong");
+            this.removeLife();
         }
-        // } else if (this.missed >= 4) { this.gameOver(LOST, 'lose'); }
-        // let keySelect = event.text;
-        // if (this.phrase.checkLetter(event)) {
-        //     this.phrase.showMatchedLetter();
-        //     this.phrase.checkForWin();
-        //     return true;
-        // }
-        // this.phrase.checkLetter();
-        // this.phrase.showMatchedLetter();
-        // this.phrase.checkForWin();
-        // this.phrase.removeLife();
-        // this.phrase.gameOver();
-        console.log('help me');
+            
+        
+           
+            //this.checkForWin();
+            // if (this.activePhrase.checkLetter(letter)) { }
+            // } else {
+            //     $(event.target).classList.add('wrong');
+            //     this.removeLife();
+            //  }
+            // } else if (this.missed >= 4) { this.gameOver(LOST, 'lose'); }
+            // let keySelect = event.text;
+            // if (this.phrase.checkLetter(event)) {
+            //     this.phrase.showMatchedLetter();
+            //     this.phrase.checkForWin();
+            //     return true;
+            // }
+            // this.phrase.checkLetter();
+            // this.phrase.showMatchedLetter();
+            // this.phrase.checkForWin();
+            // this.phrase.removeLife();
+            // this.phrase.gameOver();
+            console.log('help me');
 
+        
     }
     // } else if (this.missed >= 4) { }
     //     this.removeLife();
@@ -142,7 +161,7 @@ class Game {
                         incriments missed property.
                         if (player has 5 missed guess) { end game by calling gameOver ()}*/
     checkForWin() {
-        return ($("#phrase ul .hide").length === 0); // returns true or false depending on the value of .hide
+        return $("#phrase ul .hide").length === 0; // returns true or false depending on the value of .hide
 
 
     }

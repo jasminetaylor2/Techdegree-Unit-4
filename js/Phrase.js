@@ -12,11 +12,11 @@ class Phrase {
             if (this.phrase[i] !== ' ') {
                 $('#phrase ul').append(`<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`); //using template literals to append phrase to ul
             } else {
-                $('#phrase ul ').append(`<li class="hide space">  </li>`);  //use css class to program letter and space
+                $('#phrase ul ').append(`<li class="space">  </li>`);  //use css class to program letter and space
             }
 
         }
-        
+
 
 
     }
@@ -25,24 +25,24 @@ class Phrase {
 
 
     checkLetter(letter) {
-        return this.phrase.includes(letter);   //check to see if letter selected by player matched letter in phrase
+        return (this.phrase.includes(letter));   //check to see if letter selected by player matched letter in phrase
     }
 
 
     showMatchedLetter(letter) {
         let $phraseL;
-        for (let index = 0; index < this.phrase.length; index++) {  //loop through phrases to get the index of letter selected
+        for (let index = 0; index < this.phrase.length; index++) {  //loop through phrase to get the index of letter selected
             $phraseL = $("#phrase li")[index];                      // stores the index value of the phrase array
             if ($phraseL.textContent === letter) {                  //checks the letter matches the phrase index textContent
-                $phraseL.classList.add('show');                     // add class of show to matched letter value
-                $phraseL.classList.remove('hide');                  // add class of hide to matched letter value
+                $phraseL.classList.add("show");                     // add class of show to matched letter value
+                $phraseL.classList.remove("hide");                  // remove class of hide to matched letter value
             }
 
 
         }
-       
+
     }
-  
- 
+
+
 }
 
