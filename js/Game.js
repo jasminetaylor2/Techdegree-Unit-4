@@ -130,11 +130,11 @@ class Game {
         let $missedHearts = $heartLives[this.missed];
 
         $missedHearts.src = "images/lostHeart.png";         // replace live heart with lostheart when missed incr.+1
-         
+
         this.missed += 1;                                   // Missed guesses is incremented by 1
 
         if (this.missed === 5) {                    // If missed guesses is the maximum amount...
-        this.gameOver();    // Ends game(gameOver())
+            this.gameOver();    // Ends game(gameOver())
 
         }
     }
@@ -146,10 +146,24 @@ class Game {
 
 
     }
-    gameOver() { console.log("Game Over Bitch"); }
-/* displays original start screen overlay
-               depending on outcome of game updates <h1> with win or loss messaage
-replace overlays css .start class with either .win or .lose class */
+    gameOver() {
+        const $overlay = $("#overlay");                 // hold the overlay element
+        const $gMessage = $("#game-over-message");         //hold overlay h1 element
+        $overlay.show();                                   //show ovelayscreen when game over is called
+        $overlay.removeClass('start');                  //removes the default class from the overlay
+        if (this.missed === 5) {                        //condition test in the value of missed is at 5
+            $overlay.addClass('lose');                  // if the condition is met lose class added to overlay
+            $gMessage.text("Aww so sorry. Better Luck Next Time");  //message display on screen
+        }
+        else {
+            $overlay.addClass('win');               // if missed is a=not at 5 then user wins
+            $gMessage.text("Wow. You really are a winner"); //message display on screen
+        }
+
+    }
+    /* displays original start screen overlay
+                   depending on outcome of game updates <h1> with win or loss messaage
+    replace overlays css .start class with either .win or .lose class */
 
 
 }
