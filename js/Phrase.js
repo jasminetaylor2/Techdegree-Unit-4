@@ -7,7 +7,7 @@ class Phrase {
     }
 
     addPhraseToDisplay() {
-
+        $('#phrase ul ').empty(); // removes all child nodes of Ul ==li emlements
         for (let i = 0; i < this.phrase.length; i += 1) {
             if (this.phrase[i] !== ' ') {
                 $('#phrase ul').append(`<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`); //using template literals to append phrase to ul
@@ -17,12 +17,7 @@ class Phrase {
 
         }
 
-
-
     }
-
-
-
 
     checkLetter(letter) {
         return (this.phrase.includes(letter));   //check to see if letter selected by player matched letter in phrase

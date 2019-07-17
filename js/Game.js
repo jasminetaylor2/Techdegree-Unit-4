@@ -35,113 +35,43 @@ class Game {
         //this.phrase = this.addPhraseToDisplay();
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
-
+        this.resetGameboard();
     }
     resetGameboard() {
-        // // $('#phrase ul').empty(); // removes all child nodes of Ul ==li emlements
-        // $('#phrase ul').innerHtml = " ";
+        const $heartLives = $("#scoreboard  li img");
 
-        // $('#overlay').removeClass('win', 'lose');
-        // $('#overlay').addClass('start');
-        // // for (let i = 0; i < $('button.key').length; i += 1)
+        $('#overlay').removeClass('win', 'lose');
 
-        // $("button.key").removeClass('chosen', 'wrong');
-        // $("buton.key").prop("disabled", false);
-        // //for (let i = 0; i < $('#scoreboard li img').length; i += 1) {
-        //     // if ($('#scoreboard li img')[i].classList('tries')) {
-        //         $("div#scoreboard li img").attr("src", "images/liveHeart.png").show(["Heart Icon"]);
-        //    // }
-        //     //$("div#scoreboard li img").attr("").show();
+        $("#qwerty .key").removeClass("chosen");
+
+        $("#qwerty .key").removeClass("wrong");
+        
+        $("#qwerty .key").prop("disabled", false);
+     
+        $heartLives.src = "images/liveHeart.png";
+     
 
     }
 
 
 
     handleInteraction(event) {
-      let letter = $(event.target).text();
+        let letter = $(event.target).text();
         $(event.target).prop("disabled", true);  // disabled selected letter onscreen keyboard //.css({ "opacity": "0.6" })
-        
+
         if (this.activePhrase.checkLetter(letter)) {
             $(event.target).addClass("chosen");
             this.activePhrase.showMatchedLetter(letter);
             if (this.checkForWin()) {
                 this.gameOver();
-             }
+            }
         } else {
             $(event.target).addClass("wrong");
             this.removeLife();
         }
-            
-        
-           
-            //this.checkForWin();
-            // if (this.activePhrase.checkLetter(letter)) { }
-            // } else {
-            //     $(event.target).classList.add('wrong');
-            //     this.removeLife();
-            //  }
-            // } else if (this.missed >= 4) { this.gameOver(LOST, 'lose'); }
-            // let keySelect = event.text;
-            // if (this.phrase.checkLetter(event)) {
-            //     this.phrase.showMatchedLetter();
-            //     this.phrase.checkForWin();
-            //     return true;
-            // }
-            // this.phrase.checkLetter();
-            // this.phrase.showMatchedLetter();
-            // this.phrase.checkForWin();
-            // this.phrase.removeLife();
-            // this.phrase.gameOver();
-            console.log('help me');
 
-        
+
     }
-    // } else if (this.missed >= 4) { }
-    //     this.removeLife();
-    //     this.gameOver();
-
-    // }  // need to disable onscreen keyboard button if retun is true;
-    // else if $(this).prop('disabled', true)) {
-    //     $(".key").blur();
-    //  }
-    // else if (this.missed >= 4) {
-    //     return removeLife();
-    // }
-    // else if (this.missed = 5) { return this.gameOver(); }
-    // const clickedKey = $(".key").click(() => { });
-    //     $(event.target).prop("disabled", true).css({ "opacity": "0.6" });
-    //     if(this.phrase.checkLetter() === event.target) {          //chaining checkLetter method as a callbackfucntion To check each letter in the element match phrase
-    //     //  $("button.key").attr("disabled", true);
-    //     this.phrase.showMatchedLetter();      // if letter matched showMatchedLetter function this.phrase.checkLetter() === ''
-    //     this.checkForWin();
-
-    //     // let $buttonKey = $('.key'); //gives chosen class to keyboard letter .addClass('chosen')
-    //     // if ($(event.target).className === "disabled") {
-    //     //     $(".key")  // add opacity prop to create diabled look button
-    //     // }
-    //     return true;
-    // }
-
-
-
-
-
-    /* chekcs to see if the button clicked by player matches letter in phrase
-                        disable the selected letter on screen keyboard
-                        if (phrase does not include guessed letter) {add .wrong class the selected letters keyboard button and call removeLife()} 
-                        if ( phrase includes guess letter) {add .chosen class to selectted letters keyboard button  
-                            and call showMatchedLetter() on phrase , and then call checkForWin()}
-                        if (player wins game) {call gameOver()}*/
-    // if (this.ready) {
-    //     if (e.type === "key") { this.activePhrase.showMatchedLetter(); }
-    // }
-
-    // const phraseKey = this.phrases.filter(letter => letter  )
-    //         if (this.class === "key") {
-    //             //this.phrase.addPhraseToDisplay.chosen;
-    //         } 
-
-
 
     removeLife() {
         //const $heartLives = $("#scoreboard > ol");  // Storing all the "lives" (The heart icons)
@@ -158,11 +88,11 @@ class Game {
         }
     }
     /* removes life from scoreboard by replacing liveHeart.png with lostHeart.png
-                        incriments missed property.
-                        if (player has 5 missed guess) { end game by calling gameOver ()}*/
+        incriments missed property.
+        if (player has 5 missed guess) { end game by calling gameOver ()}*/
+    
     checkForWin() {
         return $("#phrase ul .hide").length === 0; // returns true or false depending on the value of .hide
-
 
     }
     gameOver() {
