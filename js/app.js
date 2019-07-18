@@ -2,7 +2,7 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-let game; //creates new instance of Game class
+let game = new Game; //creates new instance of Game class
 
 //?help when i call this variable game the addphrase to disp;ay function does not work
 
@@ -16,9 +16,10 @@ let game; //creates new instance of Game class
 
 $('#btn__reset').click(function () { //add 'click' event listener to "startGame" button{ which }
     //$('#overlay').hide(event.target);
+    game.resetGameboard();          // calls resetGameboard function when button is clicked
     game = new Game();              // creates new Game object and starts by callin startGame()
     game.startGame();              //calls startGame()method on object
-    game.resetGameboard();          // calls resetGameboard function when button is clicked
+   
 });
 
 

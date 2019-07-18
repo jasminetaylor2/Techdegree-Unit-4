@@ -37,19 +37,26 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
         this.resetGameboard();
     }
+
     resetGameboard() {
-        const $heartLives = $("#scoreboard  li img");
+        //const $heartLives = $("#scoreboard  li img");
+        //$heartLives.src = "images/liveHeart.png";
+        // this.missed = 0;
 
-        $('#overlay').removeClass('win', 'lose');
+        $("#scoreboard  li img").prop("src", "images/liveHeart.png");  // resets the scoreboard imgs with new lives
 
-        $("#qwerty .key").removeClass("chosen");
 
-        $("#qwerty .key").removeClass("wrong");
-        
-        $("#qwerty .key").prop("disabled", false);
-     
-        $heartLives.src = "images/liveHeart.png";
-     
+        $('#overlay').removeClass("lose");           //removes the win class from overlay
+        $('#overlay').removeClass("win");           //removes the win class from overlay
+
+        $("#qwerty .key").removeClass("chosen");            //remove class of chosen from keyboard
+
+        $("#qwerty .key").removeClass("wrong");             //remove class of wrong from keyboard
+
+        $("#qwerty .key").prop("disabled", false);          //reset keys diabled property so they can be clicked
+
+
+
 
     }
 
@@ -59,15 +66,15 @@ class Game {
         let letter = $(event.target).text();
         $(event.target).prop("disabled", true);  // disabled selected letter onscreen keyboard //.css({ "opacity": "0.6" })
 
-        if (this.activePhrase.checkLetter(letter)) {
-            $(event.target).addClass("chosen");
-            this.activePhrase.showMatchedLetter(letter);
-            if (this.checkForWin()) {
+        if (this.activePhrase.checkLetter(letter)) {        //conditon check if phrase includes guessed letter
+            $(event.target).addClass("chosen");             //add CSS class to selected letter keyboard button
+            this.activePhrase.showMatchedLetter(letter);    // this calls showMathcedLetter on the active phrase if lettr guessd
+            if (this.checkForWin()) {                       // condiont checksforWin call gameOver if condition met
                 this.gameOver();
             }
         } else {
-            $(event.target).addClass("wrong");
-            this.removeLife();
+            $(event.target).addClass("wrong");              // if the condiont aren't met add css class wrong
+            this.removeLife();                              //calls remove life if condition return false
         }
 
 
@@ -83,14 +90,14 @@ class Game {
         this.missed += 1;                                   // Missed guesses is incremented by 1
 
         if (this.missed === 5) {                    // If missed guesses is the maximum amount...
-            this.gameOver();    // Ends game(gameOver())
+            this.gameOver();                        // Ends game(gameOver())
 
         }
     }
     /* removes life from scoreboard by replacing liveHeart.png with lostHeart.png
         incriments missed property.
         if (player has 5 missed guess) { end game by calling gameOver ()}*/
-    
+
     checkForWin() {
         return $("#phrase ul .hide").length === 0; // returns true or false depending on the value of .hide
 
@@ -108,6 +115,7 @@ class Game {
             $overlay.addClass('win');               // if missed is a=not at 5 then user wins
             $gMessage.text("Wow. You really are a winner"); //message display on screen
         }
+        //this.resetGameboard();
 
     }
     /* displays original start screen overlay
