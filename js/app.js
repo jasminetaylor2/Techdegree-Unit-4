@@ -33,4 +33,4 @@ $('.key').click(function () {   //click event listener for each onscrren keyboar
 //     game.handleInteraction(event);      // listens for keypresses on user keyboard
 // });
     ////clicking blank space btw should not result in handleInteraction()
-//Resetbutton
+//Resetbutton/
